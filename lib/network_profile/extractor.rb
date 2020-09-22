@@ -48,7 +48,7 @@ class NetworkProfile::Extractor
     @links.uniq
   end
 
-  TLD = /(?<tld>com|de|net|fr|at|ch)/.freeze
+  TLD = /(?<tld>com|de|net|fr|at|ch|info)/.freeze
   HOST_PART = %r{(?<host>[a-z\-\.0-9]+)}.freeze
 
   def mapped_string
