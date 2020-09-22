@@ -4,6 +4,9 @@ RSpec.describe "Profile Links" do
       if ENV['GITHUB_API_KEY']
         NetworkProfile.github_api_key = ENV['GITHUB_API_KEY']
       end
+      if ENV['GH_API_KEY']
+        NetworkProfile.github_api_key = ENV['GH_API_KEY']
+      end
       if NetworkProfile.github_api_key == nil
         skip "Skipping Github specs because no NetworkProfile.github_api_key is set"
       end
