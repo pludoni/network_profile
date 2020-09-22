@@ -8,4 +8,3 @@ gem "pry"
 gem "rspec", ">= 3.5"
 gem "vcr"
 gem "webmock"
-gem 'pry'
