@@ -103,7 +103,7 @@ RSpec.describe "Profile Links" do
     link = "https://www.upwork.com/o/profiles/users/~01b16036da7663b295/"
     extraction = NetworkProfile.parse(link)
     expect(extraction[:title]).to be == "Islam M."
-    expect(extraction[:text]).to include 'PHP Expert'
+    expect(extraction[:text]).to include 'PHP'
     expect(extraction[:image]).to include 'https://'
     expect(extraction[:hourly_rate]).to be == '35 USD'
     expect(extraction[:jobs]).to be >= 20
