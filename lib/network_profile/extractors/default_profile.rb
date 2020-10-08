@@ -9,9 +9,8 @@ module NetworkProfile
   class DefaultProfile
     include ActiveSupport::DescendantsTracker
 
-    cattr_accessor :mdi_icon
-
     class << self
+      attr_accessor :mdi_icon
       attr_accessor :headers
     end
 
@@ -62,7 +61,7 @@ module NetworkProfile
 
     def data
       {
-        site_icon: mdi_icon,
+        site_icon: self.class.mdi_icon,
         link: @link,
         title: title,
         text: text,
@@ -86,7 +85,15 @@ module NetworkProfile
     end
 
     def json_ld
-      @json_ld ||= JSON.parse(doc.search('script[type*=ld]').first.text)
+      @json_ld ||=
+        begin
+          ld = doc.search('script[type*=ld]').first&.text
+          if ld
+            JSON.parse(ld)
+          else
+            {}
+          end
+        end
     end
 
     def rdf

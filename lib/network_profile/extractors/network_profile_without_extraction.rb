@@ -18,7 +18,7 @@ module NetworkProfile
         image: nil,
         type: self.class.name.underscore.split('/').last,
         link: @link,
-        site_icon: mdi_icon,
+        site_icon: self.class.mdi_icon,
       }
     end
   end

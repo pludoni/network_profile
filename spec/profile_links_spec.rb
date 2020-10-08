@@ -60,6 +60,27 @@ RSpec.describe "Profile Links" do
     expect(extraction[:last_item]).to_not be == nil
   end
 
+  specify 'Research Gate' do
+    link = "https://www.researchgate.net/profile/Sandra_Ciesek"
+    extraction = NetworkProfile.parse(link)
+    expect(extraction[:title]).to be == 'Sandra Ciesek'
+    expect(extraction[:text]).to be == 'University Hospital Frankfurt'
+    expect(extraction[:image]).to include ".jpg"
+    expect(extraction[:items]).to be >= 50
+    expect(extraction[:reads]).to be >= 2000
+    expect(extraction[:citations]).to be >= 1000
+    expect(extraction[:last_item]).to_not be == nil
+  end
+
+  specify 'Research - Captcha does not crash' do
+    expect_any_instance_of(NetworkProfile::DefaultProfile).to receive(:response).and_return(OpenStruct.new(
+      body: "<html><body>CAPTCHA</body></html>"
+    ))
+    link = "https://www.researchgate.net/profile/Sandra_Ciesek"
+    extraction = NetworkProfile.parse(link)
+    p extraction
+  end
+
   describe "No extraction - only matching" do
     specify "Facebook (no extraction)" do
       extraction = NetworkProfile.parse("https://www.facebook.com/gdoerner")
@@ -82,7 +103,7 @@ RSpec.describe "Profile Links" do
     link = "https://www.upwork.com/o/profiles/users/~01b16036da7663b295/"
     extraction = NetworkProfile.parse(link)
     expect(extraction[:title]).to be == "Islam M."
-    expect(extraction[:text]).to be == 'PHP Expert | Laravel, Codeigniter, Wordpress'
+    expect(extraction[:text]).to include 'PHP Expert'
     expect(extraction[:image]).to include 'https://'
     expect(extraction[:hourly_rate]).to be == '35 USD'
     expect(extraction[:jobs]).to be >= 20

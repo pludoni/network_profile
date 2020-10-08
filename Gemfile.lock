@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    network_profile (0.1.0)
+    network_profile (0.2.0)
       activesupport (>= 5.0.0)
       nokogiri
       rdf-microdata

@@ -33,7 +33,10 @@ module NetworkProfile
     end
 
     def extra_data
-      items, reads, citations = doc.at(".profile-content-item .nova-c-card").
+      card = doc.at(".profile-content-item .nova-c-card")
+      return {} unless card
+
+      items, reads, citations = card.
         search(".nova-o-grid__column").
         map { |col| col.search('.nova-e-text').map(&:text) }.
         map(&:first).map { |i| i.gsub(',', '').to_i }
