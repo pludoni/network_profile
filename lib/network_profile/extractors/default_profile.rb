@@ -77,7 +77,15 @@ module NetworkProfile
     private
 
     def response
-      @response ||= Typhoeus.get(@link, headers: NetworkProfile.headers, followlocation: true)
+      options = {
+        headers: NetworkProfile.headers,
+        followlocation: true
+      }
+      if NetworkProfile.proxy
+        options[:proxy] = NetworkProfile.proxy
+        options[:proxyuserpwd] = NetworkProfile.proxy_user_pass if NetworkProfile.proxy_user_pass.present?
+      end
+      @response ||= Typhoeus.get(@link, options)
     end
 
     def doc

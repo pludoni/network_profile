@@ -6,14 +6,14 @@ require 'active_support/core_ext/module/attribute_accessors'
 module NetworkProfile
   class Error < StandardError; end
 
-  mattr_accessor :headers, :github_api_key
+  mattr_accessor :headers, :github_api_key, :proxy, :proxy_user_pass
 
   self.headers = {
-    'Accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-    'Accept-Language' => 'de,en-US;q=0.7,en;q=0.3',
-    'Referer' => 'https://www.google.com',
-    'DNT' => '1',
-    'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:73.0) Gecko/20100101 Firefox/73.0',
+    "Accept"=>"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+    "Accept-Language"=>"de",
+    "User-Agent"=>"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36",
+    "Referer" => "https://www.google.com",
+    "Cache-Control"=>"max-age=0"
   }
   self.github_api_key = nil
 
