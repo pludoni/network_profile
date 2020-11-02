@@ -1,5 +1,8 @@
 # NetworkProfile
 
+[![Gem Version](https://badge.fury.io/rb/network_profile.svg)](https://badge.fury.io/rb/network_profile)
+
+
 Extractor Gem to analyse random strings for profile links of user. E.g. User uploads a PDF, scan it for all references to a social network profile.
 
 This work is extracted from the German Applicant Tracking System EBMS (https://bms.empfehlungsbund.de).
