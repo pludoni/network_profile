@@ -5,6 +5,7 @@ PATH
       activesupport (>= 5.0.0)
       nokogiri
       rdf-microdata
+      rexml
       typhoeus
 
 GEM
@@ -42,6 +43,7 @@ GEM
       method_source (~> 1.0)
     public_suffix (4.0.6)
     rake (12.3.3)
+    rbs (0.14.0)
     rdf (3.1.6)
       hamster (~> 3.0)
       link_header (~> 0.0, >= 0.0.8)
@@ -52,6 +54,7 @@ GEM
       rdf-xsd (~> 3.1)
     rdf-xsd (3.1.0)
       rdf (~> 3.1)
+    rexml (3.2.4)
     rspec (3.9.0)
       rspec-core (~> 3.9.0)
       rspec-expectations (~> 3.9.0)
@@ -84,6 +87,8 @@ DEPENDENCIES
   network_profile!
   pry
   rake (~> 12.0)
+  rbs
+  rexml (~> 3.2)
   rspec (>= 3.5)
   vcr
   webmock

@@ -1,0 +1,25 @@
+class NetworkProfile::Extractor
+  def self.call: (string string) -> Array[parse_response]
+
+  public
+
+  def extracted_links!: () -> Array[parse_response]
+
+  def links: () -> Array[string]
+
+  def mapped_string: () -> Array[string]
+
+  private
+
+  def initialize: (string string) -> untyped
+end
+
+NetworkProfile::Extractor::AUTO_LINK_RE: Regexp
+
+NetworkProfile::Extractor::BRACKETS: Hash
+
+NetworkProfile::Extractor::HOST_PART: Regexp
+
+NetworkProfile::Extractor::TLD: Regexp
+
+NetworkProfile::Extractor::WORD_PATTERN: String

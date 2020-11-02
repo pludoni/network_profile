@@ -8,3 +8,6 @@ gem "pry"
 gem "rspec", ">= 3.5"
 gem "vcr"
 gem "webmock"
+gem 'rbs'
+
+gem "rexml", "~> 3.2"

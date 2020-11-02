@@ -1,0 +1,26 @@
+
+type parse_response = { site_icon: string?, link: string, title: string?, text: string?, image: string?, :type => string? }
+
+module NetworkProfile
+  def self.github_api_key: () -> string?
+
+  def self.github_api_key=: (string obj) -> string
+
+  def self.headers: () -> untyped
+
+  def self.headers=: (untyped obj) -> untyped
+
+  def self.parse: (string link, ?include_fallback_custom: bool) -> parse_response?
+
+  public
+
+  def github_api_key: () -> string
+
+  def github_api_key=: (string obj) -> string
+
+  def headers: () -> untyped
+
+  def headers=: (untyped obj) -> untyped
+end
+
+NetworkProfile::VERSION: String

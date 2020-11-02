@@ -28,4 +28,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rdf-microdata"
   spec.add_dependency "activesupport", ">= 5.0.0"
   spec.add_dependency "nokogiri"
+  spec.add_dependency "rexml"
 end
