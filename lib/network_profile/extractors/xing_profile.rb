@@ -7,7 +7,7 @@ module NetworkProfile
     end
 
     def title
-      doc.at('h1').text.strip
+      doc.at('h1')&.text&.strip
     end
 
     def text
