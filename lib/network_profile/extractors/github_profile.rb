@@ -10,7 +10,7 @@ module NetworkProfile
     end
 
     def query
-      username = @link[%r{github.com/([^/]+)}, 1]
+      username = @link[%r{github.com/([^/?#]+)}, 1]
       <<~DOC
         query {
           organization(login:"#{username}") {
