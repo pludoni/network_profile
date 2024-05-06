@@ -89,7 +89,7 @@ module NetworkProfile
     end
 
     def doc
-      @doc ||= Nokogiri.parse(response.body)
+      @doc ||= Nokogiri.parse(response.body, nil, 'utf-8')
     end
 
     def json_ld
