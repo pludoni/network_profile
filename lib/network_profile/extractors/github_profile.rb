@@ -63,6 +63,10 @@ module NetworkProfile
       json.dig('data', 'organization') || json.dig('data', 'user')
     end
 
+    def data
+      super if profile_data
+    end
+
     def title
       profile_data['name']
     end
@@ -86,8 +90,8 @@ module NetworkProfile
           n = i['node']
           { name: n['nameWithOwner'],
             url: n['url'],
-            created: Time.parse(n['createdAt']).to_date,
-            updated: Time.parse(n['updatedAt']).to_date,
+            created: parse_date(n['createdAt']),
+            updated: parse_date(n['updatedAt']),
             language: n.dig('primaryLanguage', 'name'),
             stars: n['stargazers']['totalCount'],
             watchers: n['watchers']['totalCount'] }

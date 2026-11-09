@@ -55,6 +55,11 @@ module NetworkProfile
       DOC
     end
 
+    # unknown repos come back as repository: null
+    def data
+      super if json.dig('data', 'repository')
+    end
+
     def title
       json.dig('data', 'repository', 'nameWithOwner')
     end
@@ -64,7 +69,7 @@ module NetworkProfile
     end
 
     def last_commit
-      Time.parse(json.dig('data', 'repository', 'defaultBranchRef', 'target', 'committedDate')).to_date
+      parse_date(json.dig('data', 'repository', 'defaultBranchRef', 'target', 'committedDate'))
     end
 
     def image
@@ -79,7 +84,7 @@ module NetworkProfile
         issue_count: json.dig('data', 'repository', 'issues', 'totalCount'),
         commits: json.dig('data', 'repository', 'defaultBranchRef', 'target', 'history', 'totalCount'),
         license: json.dig('data', 'repository', 'licenseInfo', 'name'),
-        created: Time.parse(json.dig('data', 'repository', 'createdAt')).to_date,
+        created: parse_date(json.dig('data', 'repository', 'createdAt')),
         language_bytes: json.dig('data', 'repository', 'languages', 'edges')&.map { |l| [l.dig('node', 'name'), l['size']] }&.sort_by { |_a, b| -b },
         last_commit: last_commit
       }

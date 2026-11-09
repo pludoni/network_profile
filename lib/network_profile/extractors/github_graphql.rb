@@ -18,6 +18,10 @@ module NetworkProfile::GithubGraphql
     @json ||= query!(query)
   end
 
+  def parse_date(value)
+    Time.parse(value).to_date if value
+  end
+
   def doc
     raise NotImplementedError
   end
