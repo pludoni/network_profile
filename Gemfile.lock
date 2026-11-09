@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    network_profile (0.3.1)
+    network_profile (0.3.3)
       activesupport (>= 5.0.0)
       nokogiri
       rdf-microdata
@@ -113,4 +113,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   2.2.16
+   2.6.9
